@@ -21,8 +21,338 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet"
-        href="style.css">
+    <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#fff5f8,#ffe5ec,#fde68a);
+background-size:300% 300%;
+animation:bgMove 10s ease infinite;
+overflow-x:hidden;
+color:#333;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.loader{
+position:fixed;
+width:100%;
+height:100%;
+background:#fff;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+animation:hideLoader .8s forwards;
+animation-delay:1.2s;
+}
+
+.spinner{
+width:55px;
+height:55px;
+border-radius:50%;
+border:6px solid #eee;
+border-top:6px solid #ff4f81;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+100%{transform:rotate(360deg);}
+}
+
+@keyframes hideLoader{
+to{
+opacity:0;
+visibility:hidden;
+}
+}
+
+header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:rgba(255,255,255,.35);
+backdrop-filter:blur(15px);
+z-index:100;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+nav{
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 40px;
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+color:#d81b60;
+}
+
+nav ul{
+display:flex;
+gap:35px;
+list-style:none;
+}
+
+nav a{
+text-decoration:none;
+font-weight:600;
+color:#444;
+transition:.3s;
+}
+
+nav a:hover{
+color:#d81b60;
+}
+
+.hero{
+min-height:100vh;
+padding:120px 8%;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+align-items:center;
+gap:60px;
+}
+
+.badge{
+display:inline-block;
+background:#ff4081;
+color:white;
+padding:10px 24px;
+border-radius:40px;
+font-size:14px;
+margin-bottom:20px;
+box-shadow:0 10px 20px rgba(255,64,129,.3);
+}
+
+.hero h1{
+font-size:60px;
+color:#d81b60;
+margin-bottom:15px;
+}
+
+.hero h3{
+font-size:28px;
+margin-bottom:25px;
+color:#555;
+}
+
+.hero p{
+font-size:18px;
+line-height:1.9;
+color:#666;
+margin-bottom:35px;
+}
+
+.buttons{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:15px 32px;
+border-radius:40px;
+background:#d81b60;
+color:white;
+text-decoration:none;
+font-weight:600;
+transition:.4s;
+box-shadow:0 10px 20px rgba(216,27,96,.3);
+}
+
+.btn:hover{
+transform:translateY(-5px);
+}
+
+.outline{
+background:white;
+color:#d81b60;
+border:2px solid #d81b60;
+}
+
+.right{
+display:flex;
+justify-content:center;
+}
+
+.right img{
+width:380px;
+height:500px;
+object-fit:cover;
+border-radius:30px;
+border:8px solid rgba(255,255,255,.6);
+box-shadow:0 30px 60px rgba(0,0,0,.2);
+transition:.5s;
+}
+
+.right img:hover{
+transform:scale(1.05) rotate(2deg);
+}
+
+section{
+padding:90px 8%;
+}
+
+section h2{
+text-align:center;
+font-size:40px;
+margin-bottom:50px;
+color:#d81b60;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:35px;
+}
+
+.card{
+background:rgba(255,255,255,.5);
+backdrop-filter:blur(20px);
+padding:35px;
+border-radius:25px;
+box-shadow:0 20px 40px rgba(0,0,0,.1);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-12px);
+}
+
+.card h3{
+margin-bottom:18px;
+color:#d81b60;
+}
+
+.timeline{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.box{
+background:white;
+padding:35px;
+border-radius:20px;
+box-shadow:0 15px 35px rgba(0,0,0,.1);
+transition:.3s;
+}
+
+.box:hover{
+transform:translateY(-10px);
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+}
+
+.gallery img{
+width:100%;
+height:340px;
+object-fit:cover;
+border-radius:25px;
+transition:.5s;
+box-shadow:0 20px 35px rgba(0,0,0,.15);
+}
+
+.gallery img:hover{
+transform:scale(1.08);
+}
+
+.dream-box{
+max-width:900px;
+margin:auto;
+padding:60px;
+background:rgba(255,255,255,.45);
+backdrop-filter:blur(20px);
+border-radius:30px;
+text-align:center;
+box-shadow:0 20px 40px rgba(0,0,0,.1);
+}
+
+.quote{
+max-width:850px;
+margin:auto;
+background:white;
+padding:50px;
+border-radius:30px;
+box-shadow:0 15px 30px rgba(0,0,0,.1);
+text-align:center;
+}
+
+.quote p{
+font-size:24px;
+font-style:italic;
+line-height:1.8;
+}
+
+footer{
+background:#d81b60;
+color:white;
+text-align:center;
+padding:40px;
+margin-top:60px;
+}
+
+footer h3{
+margin-bottom:10px;
+}
+
+@media(max-width:768px){
+
+.hero{
+text-align:center;
+padding-top:150px;
+}
+
+.hero h1{
+font-size:42px;
+}
+
+.hero h3{
+font-size:22px;
+}
+
+.right img{
+width:300px;
+height:390px;
+}
+
+nav{
+flex-direction:column;
+gap:15px;
+}
+
+nav ul{
+gap:18px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.buttons{
+justify-content:center;
+}
+
+}
+</style>
 
 </head>
 
@@ -276,22 +606,7 @@
 
         </h2>
 
-        <div class="gallery">
-
-            <img src="assets/kavya.png">
-
-            <img src="assets/kavya.png">
-
-            <img src="assets/kavya.png">
-
-            <img src="assets/kavya.png">
-
-            <img src="assets/kavya.png">
-
-            <img src="assets/kavya.png">
-
-        </div>
-
+      
     </section>
 
     <section id="dream">
